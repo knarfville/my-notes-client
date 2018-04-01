@@ -20,6 +20,11 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+## TODO's
+
+1. Form validation needs some work. It needs to be more granular and has to display specific validation errors.
+2. No unit and end-to-end tests. 
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
