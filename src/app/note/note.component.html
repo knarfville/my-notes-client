@@ -1,0 +1,47 @@
+<div class="container">
+	<div *ngIf="message.get('success')" class="alert alert-success" role="alert">
+		<strong>Success: </strong>{{message.get('success')}}
+	</div>
+	<div *ngIf="message.get('failure')" class="alert alert-danger" role="alert">
+		<strong>Error: </strong>{{message.get('failure')}}
+	</div>
+</div>
+
+<div class="container">
+	<form [formGroup]="noteForm">
+		<div class="form-group">
+			<label for="titleControl" class="center-block">Title</label> <input
+				id="titleControl" class="form-control"
+				formControlName="titleControl" (keypress)="onTitleKeypress()">
+		</div>
+
+		<div class="form-group">
+			<label for="contentControl" class="center-block">Content</label>
+			<textarea id="contentControl" class="form-control"
+				formControlName="contentControl" rows="5" (keypress)="onContentKeypress()"></textarea>
+		</div>
+
+		<button type="button" class="btn btn-primary" (click)="onCreateNote()">Create</button>
+	</form>
+</div>
+
+<br>
+<div class="container">
+	<h4>My Saved Notes</h4>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Content</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let note of notes.slice().reverse()">
+				<td>{{note.id}}</td>
+				<td>{{note.title}}</td>
+				<td>{{note.content}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
