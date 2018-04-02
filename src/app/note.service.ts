@@ -18,17 +18,20 @@ export class NoteService {
   public createNote(note: Note): Observable<Object> {
     return this.http
       .post(API_URL + '/create', note)
-      .map(response => { return response; })
+      .map(response => { 
+        //TODO: should really check for the 'created' flag from the response body
+        if(response.ok && response.status == 201)
+          return response; 
+        else
+          return null;        
+      })
       .catch(this.handleError);
   }
   
   public getAllNotes(): Observable<Note[]> {
-    console.log('getting all notes @' + API_URL + '/notes')
-    
     return this.http
       .get(API_URL + '/notes')
       .map(response => {
-        console.log(response)
         const notes = response.json();
         return notes.map((note) => new Note(note));
       })

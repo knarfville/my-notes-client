@@ -34,8 +34,7 @@ export class NoteComponent implements OnInit {
       newNote.content = this.noteForm.controls['contentControl'].value;
       
       this.noteService.createNote(newNote).subscribe(result => {
-        console.log('result is . . . ');  
-        console.log(result);  
+        //TODO: should check for the 'created' flag from the response body
         if(result != null){
           this.resetNoteForm();
           this.message.set('success', 'Note has been successfully created.');
